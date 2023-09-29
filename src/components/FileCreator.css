@@ -1,15 +1,31 @@
 .file-creator {
-    text-align: center;
-    margin: 50px auto;
-    max-width: 400px;
-  }
-  
-  .file-creator p {
-    font-size: 1.2em;
-  }
-  
-  /* Optional: Add a bit of margin to the button */
-  .create-button {
-    margin-top: 20px;
-  }
-  
+  text-align: center;
+  margin: 50px auto;
+  max-width: 400px;
+}
+
+.file-creator p {
+  font-size: 1.2em;
+}
+
+.template-dropdown {
+  margin-bottom: 10px;
+}
+
+.dark-mode .template-dropdown {
+  color: #000000;
+}
+
+.template-dropdown label {
+  margin-right: 10px;
+}
+
+.template-dropdown select {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Optional: Add a bit of margin to the button */
+.create-button {
+  margin-top: 20px;
+}
