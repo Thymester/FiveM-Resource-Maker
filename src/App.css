@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.dark-mode {
+  background-color: #6e5a5a;
+  color: #ffffff;
+}
+
+.dark-mode p,
+.dark-mode .theme-toggle label {
+  color: #000000;
+}
+
+.dark-mode .app-content {
+  background-color: #aa8989;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-content {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-content p {
+  font-size: 1.2em;
+}
+
+/* Optional: Add some padding and margin to the button */
+.create-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.create-button:hover {
+  background-color: #45a049;
+}
