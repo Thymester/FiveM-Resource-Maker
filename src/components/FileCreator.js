@@ -65,7 +65,7 @@ const FileCreator = () => {
         }
       `,
       'stream': {
-        'placeholder.txt': 'This file is not needed and was only created to fullfil the JSZip library requirements'
+        'placeholder.txt': 'This file is not needed and was only created to fulfil the JSZip library requirements'
       }
     };
   
