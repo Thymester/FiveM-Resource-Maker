@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ onClick }) => {
+const Button = ({ onClick, label }) => {
   const handleButtonClick = () => {
     if (onClick) {
       onClick();
@@ -10,7 +10,7 @@ const Button = ({ onClick }) => {
 
   return (
     <button className="create-button" onClick={handleButtonClick}>
-      Create __resource.lua
+      {label}
     </button>
   );
 };

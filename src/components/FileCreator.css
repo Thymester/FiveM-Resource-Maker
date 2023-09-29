@@ -25,7 +25,18 @@
   font-size: 16px;
 }
 
-/* Optional: Add a bit of margin to the button */
 .create-button {
   margin-top: 20px;
+}
+
+.Button2 {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.Button2:hover {
+  background-color: #2980b9;
 }
