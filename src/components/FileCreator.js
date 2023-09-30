@@ -12,22 +12,14 @@ const FileCreator = () => {
   }, []);
 
   const initiateDownload = (content, fileName) => {
-    const zip = new JSZip();
-    const folder = zip.folder(fileName);
-
-    Object.keys(content).forEach(file => {
-      folder.file(file, content[file]);
-    });
-
-    zip.generateAsync({ type: 'blob' }).then(blob => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${fileName}.zip`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    });
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   const handleTemplateChange = event => {
@@ -36,17 +28,23 @@ const FileCreator = () => {
 
   const createResourceLuaFile = () => {
     let content = '';
-
+  
     if (selectedTemplate === 'Default') {
       content = `resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'\n\nclient_script 'client.lua'\nserver_script 'server.lua'\n`;
+  
+      // Create a Blob with the content and initiate file download
+      initiateDownload(content, '__resource.lua');
     } else if (selectedTemplate === 'MapTemplate') {
       content = `resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'\n\nthis_is_a_map 'yes'\ndata_file 'DLC_ITYP_REQUEST' 'stream/props.ytyp'\n`;
+  
+      // Create a Blob with the content and initiate file download
+      initiateDownload(content, '__resource.lua');
     } else if (selectedTemplate === 'VehiclesTemplate') {
       content = `resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'\n\nfiles {\n    'vehicles.meta',\n    'carvariations.meta',\n    'carcols.meta',\n    'handling.meta',\n    'vehiclelayouts.meta',\n}\n\ndata_file 'HANDLING_FILE' 'handling.meta'\ndata_file 'VEHICLE_METADATA_FILE' 'vehicles.meta'\ndata_file 'CARCOLS_FILE' 'carcols.meta'\ndata_file 'VEHICLE_VARIATION_FILE' 'carvariations.meta'\ndata_file 'VEHICLE_LAYOUTS_FILE' 'vehiclelayouts.meta'\n`;
+  
+      // Create a Blob with the content and initiate file download
+      initiateDownload(content, '__resource.lua');
     }
-
-    // Create a Blob with the content and initiate file download
-    initiateDownload(content, '__resource.lua');
   };
 
   const createEUPTemplate = () => {
@@ -71,7 +69,7 @@ const FileCreator = () => {
   
     // Create a Blob with the folder content and initiate file download
     const zip = new JSZip();
-  
+
     const addFolderContent = (folder, content) => {
       Object.keys(content).forEach(item => {
         if (typeof content[item] === 'object') {
@@ -113,6 +111,7 @@ const FileCreator = () => {
 
       <p>Click the button to create a new __resource.lua file.</p>
       <Button onClick={createResourceLuaFile} label="Create __resource.lua" />
+      <p>Click the button to create a new EUP Template folder.</p>
       <Button onClick={createEUPTemplate} label="Create EUP Template" />
     </div>
   );
